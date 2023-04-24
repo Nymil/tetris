@@ -3,5 +3,12 @@
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    console.log('js connected');
+    initiateCanvas();
+}
+
+function initiateCanvas() {
+    _$canvas = document.querySelector('canvas');
+    _ctx = _$canvas.getContext('2d');
+    _$canvas.width = 450;
+    _$canvas.height = 900;
 }
