@@ -4,5 +4,18 @@ class Game {
         this.board = new Board();
     }
 
+    run() {
+        setInterval(() => {
+            this.update();
+            this.draw();
+        })
+    }
 
+    draw() {
+        drawRect('black', [0, 0, _$canvas.width, _$canvas.height]);
+    }
+
+    update() {
+
+    }
 }
