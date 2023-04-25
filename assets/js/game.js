@@ -8,7 +8,7 @@ class Game {
         setInterval(() => {
             this.update();
             this.draw();
-        })
+        }, 1000 / this.fps);
     }
 
     draw() {
