@@ -1,3 +1,36 @@
 body {
-    background-color: hotpink;
+    background: linear-gradient(90deg, rgba(92,2,90,1) 0%, rgba(65,9,121,1) 10%, rgba(0,0,0,1) 34%, rgba(0,0,0,1) 63%, rgba(65,9,121,1) 88%, rgba(92,2,90,1) 100%);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+canvas {
+    z-index: -1;
+    width: 450px;
+    height: 890px;
+    border: 0.2rem solid #fff;
+    box-shadow: 0 0 .2rem #fff,
+    0 0 .2rem #fff,
+    0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe,
+    0 0 2.8rem #bc13fe,
+    inset 0 0 1.3rem #bc13fe;
+}
+
+h1 {
+    width: 35rem;
+    text-align: center;
+    color: white;
+    background-color: black;
+    font-size: 3rem;
+    margin: 0.5rem;
+    text-shadow: 0 0 .2rem #fff,
+    0 0 .2rem #fff,
+    0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe,
+    0 0 2.8rem #bc13fe
 }
