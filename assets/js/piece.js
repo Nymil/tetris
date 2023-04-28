@@ -3,11 +3,12 @@ class Piece {
     static pieceCount = 7;
     static rotationCount = 4;
     type;
-    shape;
+    shapes;
     rotation;
     pos;
 
-    constructor() {
+    constructor(game) {
+        this.game = game;
         this.reset();
     }
 
@@ -30,19 +31,28 @@ class Piece {
         }
     }
 
+    draw() {
+        const shape = this.shapes[this.rotation];
+        for (let row = 0; row < shape.length; row++) {
+            for (let col = 0; col < shape[0].length; col++) {
+                console.log(this.shapes[this.rotation][row][col]);
+                if (shape[row][col] === 'x') {
+                    const color = Piece.getColorByType(this.type);
+                    drawRect(color, [(this.pos.col + col) * this.game.board.cellSize, (this.pos.row + row) * this.game.board.cellSize, this.game.board.cellSize, this.game.board.cellSize]);
+                }
+            }
+        }
+    }
+
     reset() {
         this.type = Math.floor(Math.random() * Piece.pieceCount);
-        this.shape = this.getShape();
+        this.shapes = this.getShape();
         this.rotation = 0;
         this.pos = {col: 4, row: 0};
     }
 
     rotate() {
         this.rotation = (this.rotation + 1) % Piece.rotationCount;
-    }
-
-    draw() {
-        // draw de ting
     }
 
     getShape() {
