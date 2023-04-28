@@ -2,6 +2,7 @@ class Game {
     constructor() {
         this.fps = 30;
         this.board = new Board();
+        this.currentPiece = new Piece();
     }
 
     run() {
