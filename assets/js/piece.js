@@ -22,6 +22,10 @@ class Piece {
         this.rotation = (this.rotation + 1) % Piece.rotationCount;
     }
 
+    draw() {
+        // draw de ting
+    }
+
     getShape() {
         switch (this.type) {
             case 0:

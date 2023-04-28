@@ -14,6 +14,8 @@ class Game {
 
     draw() {
         drawRect('#262626', [0, 0, _$canvas.width, _$canvas.height]);
+        this.currentPiece.draw();
+        this.board.draw();
     }
 
     update() {
