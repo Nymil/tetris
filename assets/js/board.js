@@ -1,5 +1,6 @@
 class Board {
-    constructor() {
+    constructor(game) {
+        this.game = game;
         this.solidBoard = [];
     }
 }
