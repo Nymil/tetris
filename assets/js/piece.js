@@ -11,6 +11,25 @@ class Piece {
         this.reset();
     }
 
+    static getColorByType(part) {
+        switch (part) {
+            case 0:
+                return '#a12cdb';
+            case 1:
+                return '#951bab';
+            case 2:
+                return '#741bab';
+            case 3:
+                return '#8332d9';
+            case 4:
+                return '#b31fd1';
+            case 5:
+                return '#6700ff';
+            case 6:
+                return '#b56cd4';
+        }
+    }
+
     reset() {
         this.type = Math.floor(Math.random() * Piece.pieceCount);
         this.shape = this.getShape();
