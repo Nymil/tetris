@@ -18,6 +18,17 @@ class Board {
         }
     }
 
+    addPiece(piece) {
+        const shape = piece.shapes[piece.rotation];
+        for (let row = 0; row < shape.length; row++){
+            for (let col = 0; col < shape[0].length; col++){
+                if (shape[row][col] === 'x') {
+                    this.solidBoard[row + piece.pos.row][col + piece.pos.col] = piece.type;
+                }
+            }
+        }
+    }
+
     drawCell(col, row) {
         const part = this.solidBoard[row][col];
         if (part !== Board.emptyValue) {

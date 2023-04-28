@@ -2,6 +2,7 @@ class Piece {
 
     static pieceCount = 7;
     static rotationCount = 4;
+    game;
     type;
     shapes;
     rotation;
