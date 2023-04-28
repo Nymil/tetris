@@ -3,6 +3,7 @@ class Game {
         this.fps = 30;
         this.board = new Board(this);
         this.currentPiece = new Piece(this);
+        this.addEventListeners();
     }
 
     run() {
@@ -20,5 +21,15 @@ class Game {
 
     update() {
 
+    }
+
+    handleKeyPress(key) {
+        if (key === 'ArrowUp') {
+            this.currentPiece.rotate();
+        }
+    }
+
+    addEventListeners() {
+        document.addEventListener('keydown', (e) => this.handleKeyPress(e.key));
     }
 }

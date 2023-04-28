@@ -35,7 +35,6 @@ class Piece {
         const shape = this.shapes[this.rotation];
         for (let row = 0; row < shape.length; row++) {
             for (let col = 0; col < shape[0].length; col++) {
-                console.log(this.shapes[this.rotation][row][col]);
                 if (shape[row][col] === 'x') {
                     const color = Piece.getColorByType(this.type);
                     drawRect(color, [(this.pos.col + col) * this.game.board.cellSize, (this.pos.row + row) * this.game.board.cellSize, this.game.board.cellSize, this.game.board.cellSize]);
@@ -48,7 +47,13 @@ class Piece {
         this.type = Math.floor(Math.random() * Piece.pieceCount);
         this.shapes = this.getShape();
         this.rotation = 0;
-        this.pos = {col: 4, row: 0};
+        this.pos = {col: 5 - Math.floor(this.shapes[0][0].length / 2), row: 0};
+        setTimeout(() => this.moveDown(), 1000);
+    }
+
+    moveDown() {
+        this.pos.row += 1
+        setTimeout(() => this.moveDown(), 1000);
     }
 
     rotate() {
