@@ -2,6 +2,7 @@ class Piece {
 
     static pieceCount = 7;
     static rotationCount = 4;
+    game;
     board;
     type;
     shapes;
@@ -9,6 +10,7 @@ class Piece {
     pos;
 
     constructor(game) {
+        this.game = game;
         this.board = game.board;
         this.reset();
     }
@@ -58,6 +60,10 @@ class Piece {
         this.shapes = this.getShape();
         this.rotation = 0;
         this.pos = {col: 5 - Math.floor(this.shapes[0][0].length / 2), row: 0};
+        if (!this.board.isEmptySpace(this, 0, 0, 0)) {
+            this.game.reset();
+            return;
+        }
         setTimeout(() => this.moveDown(), 500);
     }
 
