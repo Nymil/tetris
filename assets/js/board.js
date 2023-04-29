@@ -31,6 +31,12 @@ class Board {
         return true;
     }
 
+    removeFullLines() {
+        const endBoard = this.solidBoard.filter(row => row.some(value => value === Board.emptyValue));
+        const startBoard = new Array(this.rows - endBoard.length).fill(new Array(this.cols).fill(Board.emptyValue));
+        this.solidBoard = startBoard.concat(endBoard);
+    }
+
     addPiece(piece) {
         const shape = piece.shapes[piece.rotation];
         for (let row = 0; row < shape.length; row++){

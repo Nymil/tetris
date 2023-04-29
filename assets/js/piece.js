@@ -64,6 +64,7 @@ class Piece {
     moveDown() {
         if (!this.board.isEmptySpace(this, 0, 1, 0)) {
             this.board.addPiece(this);
+            this.board.removeFullLines();
             this.reset();
             return;
         }
