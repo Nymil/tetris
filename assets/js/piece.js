@@ -63,6 +63,7 @@ class Piece {
     }
 
     rotate() {
+        if (!this.board.isEmptySpace(this, 0, 0, 1)) return;
         this.rotation = (this.rotation + 1) % Piece.rotationCount;
     }
 

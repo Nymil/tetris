@@ -19,12 +19,11 @@ class Board {
     }
 
     isEmptySpace(piece, dCol, dRow, dRotation) {
-        const shape = piece.shapes[piece.rotation + dRotation];
+        const shape = piece.shapes[(piece.rotation + dRotation) % Piece.rotationCount];
         for (let row = 0; row < shape.length; row++) {
             for (let col = 0; col < shape[0].length; col++) {
                 const part = shape[row][col];
                 const boardPos = {col: piece.pos.col + col + dCol, row: piece.pos.row + row + dRow};
-                console.log(this.isInValidSpace(part, boardPos));
                 if (this.isInValidSpace(part, boardPos)) {
                     return false;
                 }
