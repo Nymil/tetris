@@ -6,7 +6,7 @@ class Board {
     constructor() {
         this.cols = 10;
         this.rows = 20;
-        this.cellSize = _$canvas.width / this.cols;
+        this.cellSize = _$canvas1.width / this.cols;
         this.emptyBoard();
     }
 
@@ -57,9 +57,9 @@ class Board {
         const part = this.solidBoard[row][col];
         if (part !== Board.emptyValue) {
             const color = Piece.getColorByType(part);
-            drawRect(color, [col * this.cellSize, row * this.cellSize, this.cellSize, this.cellSize]);
+            drawRect(_ctx1, color, [col * this.cellSize, row * this.cellSize, this.cellSize, this.cellSize]);
         }
-        drawRect('white', [col * this.cellSize, row * this.cellSize, this.cellSize, this.cellSize], 1);
+        drawRect(_ctx1, 'white', [col * this.cellSize, row * this.cellSize, this.cellSize, this.cellSize], 1);
     }
 
     isInValidSpace(part, boardPos) {

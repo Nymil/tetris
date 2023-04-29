@@ -8,10 +8,14 @@ function init() {
 }
 
 function initiateCanvas() {
-    _$canvas = document.querySelector('canvas');
-    _ctx = _$canvas.getContext('2d');
-    _$canvas.width = 450;
-    _$canvas.height = 900;
+    _$canvas1 = document.querySelector('canvas#main-screen');
+    _ctx1 = _$canvas1.getContext('2d');
+    _$canvas1.width = 450;
+    _$canvas1.height = 900;
+    _$canvas2 = document.querySelector('canvas#preview');
+    _ctx2 = _$canvas2.getContext('2d');
+    _$canvas2.width = 300;
+    _$canvas2.height = 300;
 }
 
 function startGame() {

@@ -12,6 +12,7 @@ class Piece {
     constructor(game) {
         this.game = game;
         this.board = game.board;
+        this.nextType = Math.floor(Math.random() * Piece.pieceCount);
         this.reset();
         this.moveDown();
     }
@@ -41,7 +42,7 @@ class Piece {
             for (let col = 0; col < shape[0].length; col++) {
                 if (shape[row][col] === 'x') {
                     const color = Piece.getColorByType(this.type);
-                    drawRect(color, [(this.pos.col + col) * this.board.cellSize, (this.pos.row + row) * this.board.cellSize, this.board.cellSize, this.board.cellSize]);
+                    drawRect(_ctx1, color, [(this.pos.col + col) * this.board.cellSize, (this.pos.row + row) * this.board.cellSize, this.board.cellSize, this.board.cellSize]);
                 }
             }
         }
@@ -54,7 +55,8 @@ class Piece {
     }
 
     reset() {
-        this.type = Math.floor(Math.random() * Piece.pieceCount);
+        this.type = this.nextType;
+        this.nextType = Math.floor(Math.random() * Piece.pieceCount);
         this.shapes = this.getShape();
         this.rotation = 0;
         this.pos = {col: 5 - Math.floor(this.shapes[0][0].length / 2), row: 0};
