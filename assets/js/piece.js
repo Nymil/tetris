@@ -44,12 +44,21 @@ class Piece {
         }
     }
 
+    teleportDown() {
+        if (!this.board.isEmptySpace(this, 0, 1, 0)) {
+            this.board.addPiece(this);
+            return;
+        }
+        this.pos.row += 1
+        this.teleportDown();
+    }
+
     reset() {
         this.type = Math.floor(Math.random() * Piece.pieceCount);
         this.shapes = this.getShape();
         this.rotation = 0;
         this.pos = {col: 5 - Math.floor(this.shapes[0][0].length / 2), row: 0};
-        setTimeout(() => this.moveDown(), 1000);
+        setTimeout(() => this.moveDown(), 500);
     }
 
     moveDown() {
@@ -59,7 +68,17 @@ class Piece {
             return;
         }
         this.pos.row += 1
-        setTimeout(() => this.moveDown(), 500);
+        setTimeout(() => this.moveDown(), 400);
+    }
+
+    moveLeft() {
+        if (!this.board.isEmptySpace(this, -1, 0, 0)) return;
+        this.pos.col -= 1;
+    }
+
+    moveRight() {
+        if (!this.board.isEmptySpace(this, 1, 0, 0)) return;
+        this.pos.col += 1;
     }
 
     rotate() {

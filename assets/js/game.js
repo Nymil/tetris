@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.fps = 30;
-        this.board = new Board(this);
+        this.board = new Board();
         this.currentPiece = new Piece(this);
         this.addEventListeners();
     }
@@ -26,6 +26,12 @@ class Game {
     handleKeyPress(key) {
         if (key === 'ArrowUp') {
             this.currentPiece.rotate();
+        } else if (key === 'ArrowLeft') {
+            this.currentPiece.moveLeft();
+        } else if (key === 'ArrowRight') {
+            this.currentPiece.moveRight();
+        } else if (key === 'ArrowDown') {
+            this.currentPiece.teleportDown();
         }
     }
 

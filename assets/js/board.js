@@ -2,8 +2,7 @@ class Board {
 
     static emptyValue = -1;
 
-    constructor(game) {
-        this.game = game;
+    constructor() {
         this.cols = 10;
         this.rows = 20;
         this.cellSize = _$canvas.width / this.cols;
