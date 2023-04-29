@@ -14,6 +14,7 @@ class Game {
 
     restart() {
         this.board.emptyBoard();
+        this.currentPiece.nextType = Math.floor(Math.random() * Piece.pieceCount);
         this.currentPiece.reset();
     }
 
