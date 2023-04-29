@@ -50,8 +50,11 @@ p {
 
 p#score {
     margin-top: 6rem;
-    margin-bottom: 15rem;
     font-size: 3.5rem;
+}
+
+p#high-score {
+    margin-bottom: 15rem;
 }
 
 canvas#preview {
