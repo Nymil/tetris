@@ -161,6 +161,37 @@ class Piece {
         }
     }
 
+    displayShadow() {
+        let depth = 0;
+        while (this.board.isEmptySpace(this, 0, depth, 0)) {
+            depth += 1;
+        }
+
+        const shape = this.shapes[this.rotation];
+        const color = Piece.getColorByType(this.type);
+        for (let row = 0; row < shape.length; row++) {
+            for (let col = 0; col < shape[0].length; col++) {
+                const boardCol = this.pos.col + col;
+                const boardRow = this.pos.row + row + depth - 1;
+                if (shape[row][col] === 'x' && !this.coversPartOfSelf(shape, boardCol, boardRow)) {
+                    drawRect(_ctx1, color, [boardCol * this.board.cellSize, boardRow * this.board.cellSize, this.board.cellSize, this.board.cellSize], 1);
+                }
+            }
+        }
+    }
+
+    coversPartOfSelf(shape, boardCol, boardRow) {
+        for (let row = 0; row < shape.length; row++) {
+            for (let col = 0; col < shape[0].length; col++) {
+                if (shape[row][col] === 'x' && this.pos.col + col === boardCol && this.pos.row + row === boardRow) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
     moveDown() {
         if (!this.board.isEmptySpace(this, 0, 1, 0)) {
             this.board.addPiece(this);

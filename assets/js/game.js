@@ -39,6 +39,7 @@ class Game {
         this.currentPiece.draw();
         this.currentPiece.displayNextPiece();
         this.board.draw();
+        this.currentPiece.displayShadow();
         this.updateScore();
     }
 
