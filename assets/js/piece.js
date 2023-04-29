@@ -48,7 +48,6 @@ class Piece {
 
     teleportDown() {
         if (!this.board.isEmptySpace(this, 0, 1, 0)) {
-            this.board.addPiece(this);
             return;
         }
         this.pos.row += 1
