@@ -2,14 +2,14 @@ class Piece {
 
     static pieceCount = 7;
     static rotationCount = 4;
-    game;
+    board;
     type;
     shapes;
     rotation;
     pos;
 
     constructor(game) {
-        this.game = game;
+        this.board = game.board;
         this.reset();
     }
 
@@ -38,7 +38,7 @@ class Piece {
             for (let col = 0; col < shape[0].length; col++) {
                 if (shape[row][col] === 'x') {
                     const color = Piece.getColorByType(this.type);
-                    drawRect(color, [(this.pos.col + col) * this.game.board.cellSize, (this.pos.row + row) * this.game.board.cellSize, this.game.board.cellSize, this.game.board.cellSize]);
+                    drawRect(color, [(this.pos.col + col) * this.board.cellSize, (this.pos.row + row) * this.board.cellSize, this.board.cellSize, this.board.cellSize]);
                 }
             }
         }
@@ -53,9 +53,13 @@ class Piece {
     }
 
     moveDown() {
-        if (!this.game.board.isEmptySpace(this, 0, 1, 0)) return;
+        if (!this.board.isEmptySpace(this, 0, 1, 0)) {
+            this.board.addPiece(this);
+            this.reset();
+            return;
+        }
         this.pos.row += 1
-        setTimeout(() => this.moveDown(), 1000);
+        setTimeout(() => this.moveDown(), 500);
     }
 
     rotate() {
