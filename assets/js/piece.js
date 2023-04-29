@@ -13,6 +13,7 @@ class Piece {
         this.game = game;
         this.board = game.board;
         this.reset();
+        this.moveDown();
     }
 
     static getColorByType(part) {
@@ -47,11 +48,9 @@ class Piece {
     }
 
     teleportDown() {
-        if (!this.board.isEmptySpace(this, 0, 1, 0)) {
-            return;
+        while (this.board.isEmptySpace(this, 0, 1, 0)) {
+            this.pos.row += 1
         }
-        this.pos.row += 1
-        this.teleportDown();
     }
 
     reset() {
@@ -60,10 +59,8 @@ class Piece {
         this.rotation = 0;
         this.pos = {col: 5 - Math.floor(this.shapes[0][0].length / 2), row: 0};
         if (!this.board.isEmptySpace(this, 0, 0, 0)) {
-            this.game.reset();
-            return;
+            this.game.restart();
         }
-        setTimeout(() => this.moveDown(), 500);
     }
 
     moveDown() {
@@ -71,9 +68,9 @@ class Piece {
             this.board.addPiece(this);
             this.board.removeFullLines();
             this.reset();
-            return;
+        } else {
+            this.pos.row += 1
         }
-        this.pos.row += 1
         setTimeout(() => this.moveDown(), 400);
     }
 

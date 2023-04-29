@@ -1,7 +1,8 @@
 class Game {
     constructor() {
         this.fps = 30;
-        this.reset();
+        this.board = new Board();
+        this.currentPiece = new Piece(this);
         this.addEventListeners();
     }
 
@@ -11,9 +12,9 @@ class Game {
         }, 1000 / this.fps);
     }
 
-    reset() {
-        this.board = new Board();
-        this.currentPiece = new Piece(this);
+    restart() {
+        this.board.emptyBoard();
+        this.currentPiece.reset();
     }
 
     draw() {
@@ -32,7 +33,7 @@ class Game {
         } else if (key === 'ArrowDown') {
             this.currentPiece.teleportDown();
         } else if (key === 'r') {
-            this.reset();
+            this.restart();
         }
     }
 
