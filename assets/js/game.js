@@ -21,6 +21,7 @@ class Game {
     draw() {
         drawRect(_ctx1, '#262626', [0, 0, _$canvas1.width, _$canvas1.height]);
         this.currentPiece.draw();
+        this.currentPiece.displayNextPiece();
         this.board.draw();
     }
 
