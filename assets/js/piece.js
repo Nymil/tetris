@@ -164,7 +164,8 @@ class Piece {
     moveDown() {
         if (!this.board.isEmptySpace(this, 0, 1, 0)) {
             this.board.addPiece(this);
-            this.board.removeFullLines();
+            const points = this.board.removeFullLines();
+            this.game.score += points;
             this.reset();
         } else {
             this.pos.row += 1

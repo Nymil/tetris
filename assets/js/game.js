@@ -1,6 +1,7 @@
 class Game {
     constructor() {
         this.fps = 30;
+        this.score = 0;
         this.board = new Board();
         this.currentPiece = new Piece(this);
         this.addEventListeners();
@@ -13,6 +14,7 @@ class Game {
     }
 
     restart() {
+        this.score = 0;
         this.board.emptyBoard();
         this.currentPiece.nextType = Math.floor(Math.random() * Piece.pieceCount);
         this.currentPiece.reset();
@@ -23,6 +25,11 @@ class Game {
         this.currentPiece.draw();
         this.currentPiece.displayNextPiece();
         this.board.draw();
+        this.updateScore();
+    }
+
+    updateScore() {
+        document.querySelector('p#score').innerText = `score: ${this.score}`;
     }
 
     handleKeyPress(key) {

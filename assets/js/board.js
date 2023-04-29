@@ -38,8 +38,10 @@ class Board {
 
     removeFullLines() {
         const endBoard = this.solidBoard.filter(row => row.some(value => value === Board.emptyValue));
-        const startBoard = new Array(this.rows - endBoard.length).fill(new Array(this.cols).fill(Board.emptyValue));
+        const removedLineCount = this.rows - endBoard.length;
+        const startBoard = new Array(removedLineCount).fill(new Array(this.cols).fill(Board.emptyValue));
         this.solidBoard = startBoard.concat(endBoard);
+        return 100 * removedLineCount;
     }
 
     addPiece(piece) {
