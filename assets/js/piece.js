@@ -53,6 +53,7 @@ class Piece {
     }
 
     moveDown() {
+        if (!this.game.board.isEmptySpace(this, 0, 1, 0)) return;
         this.pos.row += 1
         setTimeout(() => this.moveDown(), 1000);
     }
