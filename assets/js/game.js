@@ -1,26 +1,25 @@
 class Game {
     constructor() {
         this.fps = 30;
-        this.board = new Board();
-        this.currentPiece = new Piece(this);
+        this.reset();
         this.addEventListeners();
     }
 
     run() {
         setInterval(() => {
-            this.update();
             this.draw();
         }, 1000 / this.fps);
+    }
+
+    reset() {
+        this.board = new Board();
+        this.currentPiece = new Piece(this);
     }
 
     draw() {
         drawRect('#262626', [0, 0, _$canvas.width, _$canvas.height]);
         this.currentPiece.draw();
         this.board.draw();
-    }
-
-    update() {
-
     }
 
     handleKeyPress(key) {
@@ -32,6 +31,8 @@ class Game {
             this.currentPiece.moveRight();
         } else if (key === 'ArrowDown') {
             this.currentPiece.teleportDown();
+        } else if (key === 'r') {
+            this.reset();
         }
     }
 
